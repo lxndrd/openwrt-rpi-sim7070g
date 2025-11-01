@@ -1,4 +1,5 @@
-FROM docker.io/openwrt/imagebuilder:bcm27xx-bcm2710-24.10.4 AS builder
+ARG OPENWRT_VERSION=24.10.4
+FROM docker.io/openwrt/imagebuilder:bcm27xx-bcm2710-${OPENWRT_VERSION} AS builder
 
 RUN ./setup.sh
 

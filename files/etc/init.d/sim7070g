@@ -6,7 +6,7 @@ STOP=01
 
 start_service() {
     procd_open_instance
-    # Hold SIM7070G power key at 0
+    # Hold SIM7070G power key at 0 to keep the module powered on
     procd_set_param command gpioset -c0 4=0
     procd_close_instance
 }

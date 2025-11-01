@@ -1,6 +1,9 @@
+OPENWRT_VERSION ?= 24.10.4
+IMAGE := "./openwrt-imagebuilder/bin/targets/bcm27xx/bcm2710/openwrt-${OPENWRT_VERSION}-bcm27xx-bcm2710-rpi-3-ext4-factory.img.gz"
+
 build:
-	docker build . --output openwrt-imagebuilder/bin
-	cp ./openwrt-imagebuilder/bin/targets/bcm27xx/bcm2710/openwrt-24.10.4-bcm27xx-bcm2710-rpi-3-ext4-factory.img.gz openwrt-rpi.img.gz
+	docker build . --build-arg OPENWRT_VERSION=${OPENWRT_VERSION} --output openwrt-imagebuilder/bin
+	cp "${IMAGE}" openwrt-rpi.img.gz
 	gzip -vdf openwrt-rpi.img.gz
 
 flash:
